@@ -37,9 +37,10 @@ public class App extends Application {
         extension.addExtension("mp3");
         extension.addExtension("zzp");
         extension.addExtension("bin");
+        extension.addExtension("html");
 
         builder.setCacheExtensionConfig(extension);
-        //builder.setAssetsDir("static");
+        builder.setAssetsDir("static");
         //builder.isAssetsSuffixMod(true);
         builder.setDebug(true);
 

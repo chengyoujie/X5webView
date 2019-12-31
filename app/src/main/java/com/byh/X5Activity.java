@@ -41,7 +41,7 @@ public class X5Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_x5);
 
-        mViewParent =  findViewById(R.id.webView1);
+        mViewParent =  findViewById(R.id.webView);
         initConfig();
         init();
     }
@@ -136,7 +136,7 @@ public class X5Activity extends Activity {
         webSetting.setAppCacheEnabled(true);
         // webSetting.setDatabaseEnabled(true);
         webSetting.setDomStorageEnabled(true);
-//        webSetting.setJavaScriptEnabled(true);
+        webSetting.setJavaScriptEnabled(true);
         webSetting.setGeolocationEnabled(true);
         webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
         webSetting.setAppCachePath(this.getDir("appcache", 0).getPath());
@@ -189,7 +189,7 @@ public class X5Activity extends Activity {
 
     /**重新启动**/
     public void restart() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, X5Activity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         android.os.Process.killProcess(android.os.Process.myPid());
@@ -223,16 +223,16 @@ public class X5Activity extends Activity {
         myAlertDialog.show();
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (mWebView != null && mWebView.canGoBack()) {
-                mWebView.goBack();
-                return true;
-            } else
-                return super.onKeyDown(keyCode, event);
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            if (mWebView != null && mWebView.canGoBack()) {
+//                mWebView.goBack();
+//                return true;
+//            } else
+//                return super.onKeyDown(keyCode, event);
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 }
