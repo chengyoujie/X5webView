@@ -1,12 +1,16 @@
 package com.byh;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.hb.dialog.myDialog.MyAlertDialog;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
@@ -121,7 +125,20 @@ public class X5Activity extends Activity {
                 /**
                  * 这里写入你自定义的window alert
                  */
-                return super.onJsAlert(null, arg1, arg2, arg3);
+//                final MyAlertDialog myAlertDialog = new MyAlertDialog(X5Activity.this).builder()
+//                        .setTitle("提示")
+//                        .setMsg(arg2)
+//                        .setPositiveButton("确认", new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                Log.i("alert", "关闭alert");
+//                            }
+//                        });
+//                myAlertDialog.show();
+                Toast.makeText(X5Activity.this, arg2,Toast.LENGTH_SHORT).show();
+                arg3.cancel();
+                return true;
+//                return super.onJsAlert(null, arg1, arg2, arg3);
             }
         });
 
@@ -143,6 +160,7 @@ public class X5Activity extends Activity {
         webSetting.setDatabasePath(this.getDir("databases", 0).getPath());
         webSetting.setGeolocationDatabasePath(this.getDir("geolocation", 0)
                 .getPath());
+        mWebView.addJavascriptInterface(new JSInterface(this), "wdsdk");
         // webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
 //        webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
         // webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);

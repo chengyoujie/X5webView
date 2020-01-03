@@ -27,7 +27,7 @@ public class App extends Application {
 
 
         builder.setCachePath(new File(this.getCacheDir(),CACHE_NAME))//设置缓存路径，默认getCacheDir，名称CacheWebViewCache
-                .setCacheSize(1024*1024*100)//设置缓存大小，默认100M
+                .setCacheSize(1024*1024*300)//设置缓存大小，默认100M
                 .setConnectTimeoutSecond(20)//设置http请求链接超时，默认20秒
                 .setReadTimeoutSecond(20);//设置http请求链接读取超时，默认20秒
 
